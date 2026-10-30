@@ -1,4 +1,4 @@
-import { Check } from 'lucide-react'
+import { MaterialSymbol } from '@/components/ui/material-symbol'
 
 const items = [
   {
@@ -44,7 +44,7 @@ export function PromotionSection() {
               >
                 <span className="flex items-center gap-3">
                   <span className="bg-brand-red flex size-6 shrink-0 items-center justify-center rounded-full text-white">
-                    <Check className="size-4" />
+                    <MaterialSymbol aria-hidden icon="check" size={16} />
                   </span>
                   <span className="text-brand-black text-sm font-medium text-pretty md:text-base">
                     {item.label}

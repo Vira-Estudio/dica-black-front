@@ -1,3 +1,5 @@
+import Autoplay from 'embla-carousel-autoplay'
+import { useRef } from 'react'
 import {
   Carousel,
   CarouselContent,
@@ -6,33 +8,31 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel'
 
-const reviews = [
-  {
-    alt: 'Print do comentário de warmesloures no Instagram',
-    src: 'https://placehold.co/360x480?text=Review+1',
-  },
-  {
-    alt: 'Print do comentário de lucasbraganti no Instagram',
-    src: 'https://placehold.co/360x480?text=Review+2',
-  },
-  {
-    alt: 'Print do comentário de leonardoalves0 no Instagram',
-    src: 'https://placehold.co/360x480?text=Review+3',
-  },
-  {
-    alt: 'Print do comentário de lsgarrido13 no Instagram',
-    src: 'https://placehold.co/360x480?text=Review+4',
-  },
-  {
-    alt: 'Print do comentário de ali_0st no Instagram',
-    src: 'https://placehold.co/360x480?text=Review+5',
-  },
-]
+const reviewModules = import.meta.glob<{ default: string }>(
+  '@/assets/reviews/review-*.webp',
+  { eager: true }
+)
+
+const reviews = Object.entries(reviewModules)
+  .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
+  .map(([path, mod], index) => ({
+    alt: `Print de avaliação ${index + 1}`,
+    key: path,
+    src: mod.default,
+  }))
 
 export function ReviewsSection() {
+  const autoplay = useRef(
+    Autoplay({
+      delay: 3000,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+    })
+  )
+
   return (
-    <section className="bg-brand-red overflow-x-hidden py-12 md:py-16">
-      <div className="mx-auto max-w-6xl px-4 md:px-8">
+    <section className="bg-brand-red relative z-10 overflow-x-hidden py-12 md:py-16">
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
         <h2 className="mx-auto max-w-3xl text-center text-xl font-extrabold text-balance text-white md:text-2xl">
           Veja o que mudou na rotina de quem queria evoluir, mas não conseguia
           lembrar das técnicas.
@@ -44,16 +44,17 @@ export function ReviewsSection() {
             align: 'start',
             loop: true,
           }}
+          plugins={[autoplay.current]}
         >
-          <CarouselContent>
+          <CarouselContent className="items-start">
             {reviews.map((review) => (
               <CarouselItem
                 className="basis-full sm:basis-1/2 lg:basis-1/3"
-                key={review.src}
+                key={review.key}
               >
                 <img
                   alt={review.alt}
-                  className="h-auto w-full rounded-xl bg-white object-cover"
+                  className="block h-auto w-full rounded-xl"
                   height={480}
                   src={review.src}
                   width={360}

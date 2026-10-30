@@ -1,4 +1,4 @@
-import { Check } from 'lucide-react'
+import { MaterialSymbol } from '@/components/ui/material-symbol'
 
 const items = [
   'Quer lembrar das técnicas e aplicá-las com mais confiança no rola.',
@@ -23,9 +23,9 @@ export function ChecklistSection() {
               {items.map((item) => (
                 <li className="flex items-start gap-3" key={item}>
                   <span className="bg-brand-red mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-sm text-white">
-                    <Check className="size-4" />
+                    <MaterialSymbol aria-hidden icon="check" size={16} />
                   </span>
-                  <p className="text-base text-white">{item}</p>
+                  <p className="text-base text-white text-pretty">{item}</p>
                 </li>
               ))}
             </ul>

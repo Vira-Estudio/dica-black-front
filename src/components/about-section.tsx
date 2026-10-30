@@ -1,3 +1,5 @@
+import aboutImage from '@/assets/about.webp'
+
 export function AboutSection() {
   return (
     <section className="bg-brand-black py-12 md:py-16">
@@ -30,7 +32,7 @@ export function AboutSection() {
           alt="Lucas Braganti, faixa-preta de Jiu-Jitsu"
           className="mx-auto h-auto w-full max-w-md rounded-2xl object-cover"
           height={640}
-          src="https://placehold.co/480x640?text=Lucas+Braganti"
+          src={aboutImage}
           width={480}
         />
       </div>

@@ -1,12 +1,14 @@
+import logo from '@/assets/logo.webp'
+
 export function Footer() {
   return (
     <footer className="bg-brand-red-dark text-white">
       <div className="mx-auto max-w-6xl px-4 py-12 md:px-8 md:py-16">
         <img
           alt="Dica Black"
-          className="mx-auto h-10 w-auto"
+          className="mx-auto w-full max-w-58"
           height={48}
-          src="https://placehold.co/200x48/ffffff/960001?text=DICA+BLACK"
+          src={logo}
           width={200}
         />
 

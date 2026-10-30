@@ -1,5 +1,33 @@
-import { LockKeyhole, ShieldCheck, Star } from 'lucide-react'
+import logo from '@/assets/logo.webp'
 import { Button } from '@/components/ui/button'
+import { MaterialSymbol } from '@/components/ui/material-symbol'
+
+const trustItems = [
+  {
+    icon: 'encrypted',
+    label: (
+      <>
+        Compra <br /> <strong>Segura</strong>
+      </>
+    ),
+  },
+  {
+    icon: 'lock',
+    label: (
+      <>
+        Privacidade <br /> <strong>Protegida</strong>
+      </>
+    ),
+  },
+  {
+    icon: 'star',
+    label: (
+      <>
+        Satisfação <br /> <strong>Garantida</strong>
+      </>
+    ),
+  },
+]
 
 export function BuySection() {
   return (
@@ -19,9 +47,9 @@ export function BuySection() {
           <div className="flex flex-col items-center justify-center gap-5 p-8 text-center">
             <img
               alt="Logo Dica Black"
-              className="h-10 w-auto"
+              className="w-full max-w-64"
               height={48}
-              src="https://placehold.co/200x48?text=DICA+BLACK"
+              src={logo}
               width={200}
             />
 
@@ -39,24 +67,22 @@ export function BuySection() {
             </Button>
 
             <div className="mt-2 grid w-full max-w-sm grid-cols-3 gap-3">
-              <div className="flex flex-col items-center gap-1">
-                <LockKeyhole className="size-5 text-zinc-600" />
-                <p className="text-brand-black text-xs font-medium">
-                  Compra <br /> <strong>Segura</strong>
-                </p>
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <ShieldCheck className="size-5 text-zinc-600" />
-                <p className="text-brand-black text-xs font-medium">
-                  Privacidade <br /> <strong>Protegida</strong>
-                </p>
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <Star className="size-5 text-zinc-600" />
-                <p className="text-brand-black text-xs font-medium">
-                  Satisfação <br /> <strong>Garantida</strong>
-                </p>
-              </div>
+              {trustItems.map((item) => (
+                <div
+                  className="flex flex-col items-center gap-1"
+                  key={item.icon}
+                >
+                  <MaterialSymbol
+                    aria-hidden
+                    className="text-zinc-600"
+                    icon={item.icon}
+                    size={20}
+                  />
+                  <p className="text-brand-black text-xs font-medium">
+                    {item.label}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
