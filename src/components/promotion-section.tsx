@@ -1,4 +1,9 @@
 import { MaterialSymbol } from '@/components/ui/material-symbol'
+import {
+  MotionInView,
+  MotionStaggerItem,
+  MotionStaggerList,
+} from '@/components/ui/motion-in-view'
 
 const items = [
   {
@@ -32,13 +37,15 @@ export function PromotionSection() {
     <section className="bg-brand-muted200 py-12 md:py-16">
       <div className="mx-auto flex max-w-3xl flex-col items-center px-4 md:px-8">
         <article className="w-full rounded-2xl border border-zinc-400 bg-white p-6 md:p-8">
-          <h2 className="text-brand-black text-center text-xl font-extrabold text-balance">
-            Recapitulando tudo o que você vai receber com o Dica Black
-          </h2>
+          <MotionInView delay={0.25} preset="fadeScale">
+            <h2 className="text-brand-black text-center text-xl font-extrabold text-balance">
+              Recapitulando tudo o que você vai receber com o Dica Black
+            </h2>
+          </MotionInView>
 
-          <ul className="mt-8 flex flex-col gap-4">
+          <MotionStaggerList className="mt-8 flex flex-col gap-4">
             {items.map((item) => (
-              <li
+              <MotionStaggerItem
                 className="flex items-center justify-between gap-4"
                 key={item.label}
               >
@@ -53,22 +60,26 @@ export function PromotionSection() {
                 <span className="text-brand-red shrink-0 text-sm font-semibold line-through md:text-base">
                   {item.price}
                 </span>
-              </li>
+              </MotionStaggerItem>
             ))}
-          </ul>
+          </MotionStaggerList>
         </article>
 
-        <article className="mt-6 rounded-2xl border border-zinc-400 bg-white px-6 py-4 md:px-8 md:py-5">
-          <p className="text-brand-black text-center text-base font-bold text-pretty">
-            Tudo isso deveria custar:{' '}
-            <span className="text-brand-red line-through">R$ 649,00</span>
+        <MotionInView delay={0.5} preset="fadeUp">
+          <article className="mt-6 rounded-2xl border border-zinc-400 bg-white px-6 py-4 md:px-8 md:py-5">
+            <p className="text-brand-black text-center text-base font-bold text-pretty">
+              Tudo isso deveria custar:{' '}
+              <span className="text-brand-red line-through">R$ 649,00</span>
+            </p>
+          </article>
+        </MotionInView>
+
+        <MotionInView delay={0.6} preset="fadeUp">
+          <p className="mt-8 text-center text-lg font-bold text-balance text-black md:text-2xl">
+            Mas, somente hoje, você pode ter acesso ao Dica Black por um valor
+            muito mais acessível!
           </p>
-        </article>
-
-        <p className="mt-8 text-center text-lg font-bold text-balance text-black md:text-2xl">
-          Mas, somente hoje, você pode ter acesso ao Dica Black por um valor
-          muito mais acessível!
-        </p>
+        </MotionInView>
       </div>
     </section>
   )
