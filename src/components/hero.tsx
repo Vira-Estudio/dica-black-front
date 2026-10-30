@@ -1,8 +1,42 @@
+import { useEffect, useRef, useState } from 'react'
 import heroVideo from '@/assets/hero.mp4'
 import iconKimonoSmall from '@/assets/icon-kimono-small.webp'
 import { MotionInView } from '@/components/ui/motion-in-view'
 
 export function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [videoSrc, setVideoSrc] = useState<string | undefined>()
+
+  useEffect(() => {
+    let cancelled = false
+    const load = () => {
+      if (!cancelled) {
+        setVideoSrc(heroVideo)
+      }
+    }
+
+    if (typeof window.requestIdleCallback === 'function') {
+      const id = window.requestIdleCallback(load, { timeout: 1500 })
+      return () => {
+        cancelled = true
+        window.cancelIdleCallback(id)
+      }
+    }
+
+    const timer = window.setTimeout(load, 200)
+    return () => {
+      cancelled = true
+      window.clearTimeout(timer)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!(videoSrc && videoRef.current)) {
+      return
+    }
+    void videoRef.current.play().catch(() => undefined)
+  }, [videoSrc])
+
   return (
     <section className="bg-brand-muted200 relative z-0">
       <div className="bg-brand-red px-4 py-3 text-center md:px-8">
@@ -31,9 +65,10 @@ export function Hero() {
               <img
                 alt="Ícone de kimono"
                 className="size-6 object-contain"
-                height={40}
+                decoding="async"
+                height={46}
                 src={iconKimonoSmall}
-                width={40}
+                width={48}
               />
               <p className="text-brand-black text-sm font-medium md:text-base">
                 Revise suas técnicas mesmo fora do tatame
@@ -47,17 +82,20 @@ export function Hero() {
           delay={0.55}
           preset="fadeScale"
         >
-          <video
-            autoPlay
-            className="relative z-0 mx-auto h-auto w-72 [clip-path:inset(3.5%_0)] md:w-96"
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            src={heroVideo}
-          >
-            <track kind="captions" />
-          </video>
+          <div className="relative z-0 mx-auto aspect-[1280/2304] w-72 [clip-path:inset(3.5%_0)] md:w-96">
+            <video
+              autoPlay
+              className="absolute inset-0 size-full object-cover"
+              loop
+              muted
+              playsInline
+              preload="none"
+              ref={videoRef}
+              src={videoSrc}
+            >
+              <track kind="captions" />
+            </video>
+          </div>
         </MotionInView>
       </div>
     </section>

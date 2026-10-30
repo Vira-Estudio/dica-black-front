@@ -57,12 +57,12 @@ export function BuySection() {
             <MotionInView delay={0.3} preset="fadeUp">
               <img
                 alt="Logo Dica Black"
-                className="w-full max-w-64"
+                className="aspect-[250/28] h-auto w-full max-w-64"
                 decoding="async"
-                height={48}
+                height={28}
                 loading="lazy"
                 src={logo}
-                width={200}
+                width={250}
               />
             </MotionInView>
 

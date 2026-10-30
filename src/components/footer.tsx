@@ -13,12 +13,12 @@ export function Footer() {
         >
           <img
             alt="Dica Black"
-            className="mx-auto w-full max-w-58"
+            className="mx-auto aspect-[250/28] h-auto w-full max-w-58"
             decoding="async"
-            height={48}
+            height={28}
             loading="lazy"
             src={logo}
-            width={200}
+            width={250}
           />
         </MotionInView>
 

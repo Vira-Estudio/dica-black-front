@@ -1,10 +1,47 @@
-import { cn } from 'cn'
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from 'embla-carousel-react'
-import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import * as React from 'react'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+
+function ChevronLeft({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden
+      className={className}
+      fill="none"
+      height="32"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      width="32"
+    >
+      <path d="m15 18-6-6 6-6" />
+    </svg>
+  )
+}
+
+function ChevronRight({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden
+      className={className}
+      fill="none"
+      height="32"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      width="32"
+    >
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+  )
+}
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -192,7 +229,7 @@ function CarouselPrevious({
       variant={variant}
       {...props}
     >
-      <ChevronLeftIcon className="size-8" />
+      <ChevronLeft />
       <span className="sr-only">Slide anterior</span>
     </Button>
   )
@@ -222,7 +259,7 @@ function CarouselNext({
       variant={variant}
       {...props}
     >
-      <ChevronRightIcon className="size-8" />
+      <ChevronRight />
       <span className="sr-only">Próximo slide</span>
     </Button>
   )

@@ -34,12 +34,12 @@ export function AboutSection() {
         <MotionInView delay={0.45} preset="fadeScale">
           <img
             alt="Lucas Braganti, faixa-preta de Jiu-Jitsu"
-            className="mx-auto h-auto w-full max-w-md rounded-2xl object-cover"
+            className="mx-auto aspect-[800/970] h-auto w-full max-w-md rounded-2xl object-cover"
             decoding="async"
-            height={640}
+            height={970}
             loading="lazy"
             src={aboutImage}
-            width={480}
+            width={800}
           />
         </MotionInView>
       </div>

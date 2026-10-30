@@ -43,12 +43,25 @@
     >
     <meta content="%SITE_URL%/og-image.webp" name="twitter:image">
 
-    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <!-- Material Symbols: não bloqueia o first paint -->
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+      rel="preload"
+    >
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+      media="print"
+      onload="this.media='all'"
       rel="stylesheet"
     >
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+        rel="stylesheet"
+      >
+    </noscript>
   </head>
   <body class="antialiased">
     <div id="root"></div>

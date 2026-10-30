@@ -67,12 +67,12 @@ export function ReviewsSection() {
                 >
                   <img
                     alt={review.alt}
-                    className="block h-auto w-full rounded-xl"
+                    className="aspect-[520/202] h-auto w-full rounded-xl object-cover"
                     decoding="async"
-                    height={480}
+                    height={202}
                     loading="lazy"
                     src={review.src}
-                    width={360}
+                    width={520}
                   />
                 </CarouselItem>
               ))}

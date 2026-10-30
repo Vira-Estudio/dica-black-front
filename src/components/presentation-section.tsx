@@ -121,22 +121,22 @@ function AthleteBlock() {
     <>
       <img
         alt="Homem ajoelhado de kimono"
-        className="relative z-0 mx-auto block h-auto w-full rounded-xl object-cover"
+        className="relative z-0 mx-auto block aspect-[800/973] h-auto w-full rounded-xl object-cover"
         decoding="async"
-        height={640}
+        height={973}
         loading="lazy"
         src={athlete}
-        width={480}
+        width={800}
       />
       <img
         alt=""
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-20 mx-auto h-full w-full rounded-xl object-cover"
+        className="pointer-events-none absolute inset-0 z-20 mx-auto size-full rounded-xl object-cover"
         decoding="async"
-        height={640}
+        height={973}
         loading="lazy"
         src={athleteTransparent}
-        width={480}
+        width={800}
       />
     </>
   )
@@ -174,10 +174,10 @@ function ArrowIcon() {
             aria-hidden
             className="size-14 object-contain md:size-16"
             decoding="async"
-            height={80}
+            height={179}
             loading="lazy"
             src={iconArrow}
-            width={80}
+            width={128}
           />
         ) : (
           <motion.img
@@ -186,7 +186,7 @@ function ArrowIcon() {
             aria-hidden
             className="size-14 object-contain md:size-16"
             decoding="async"
-            height={80}
+            height={179}
             loading="lazy"
             src={iconArrow}
             transition={{
@@ -194,7 +194,7 @@ function ArrowIcon() {
               ease: 'easeInOut',
               repeat: Number.POSITIVE_INFINITY,
             }}
-            width={80}
+            width={128}
           />
         )}
       </MotionInView>
@@ -258,10 +258,10 @@ export function PresentationSection() {
                   alt="Ícone de kimono"
                   className="absolute top-2 left-1/2 size-24 -translate-x-1/2 -translate-y-1/2 object-contain md:top-3"
                   decoding="async"
-                  height={80}
+                  height={308}
                   loading="lazy"
                   src={iconKimonoLarge}
-                  width={80}
+                  width={192}
                 />
 
                 <p className="text-center text-base font-bold text-balance text-black md:text-lg">

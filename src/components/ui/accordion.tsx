@@ -1,6 +1,5 @@
 import { Accordion as AccordionPrimitive } from '@base-ui/react/accordion'
-import { cn } from 'cn'
-import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 function Accordion({ className, ...props }: AccordionPrimitive.Root.Props) {
   return (
@@ -22,6 +21,46 @@ function AccordionItem({ className, ...props }: AccordionPrimitive.Item.Props) {
   )
 }
 
+function ChevronDown({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden
+      className={className}
+      data-slot="accordion-trigger-icon"
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      width="16"
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  )
+}
+
+function ChevronUp({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden
+      className={className}
+      data-slot="accordion-trigger-icon"
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      width="16"
+    >
+      <path d="m18 15-6-6-6 6" />
+    </svg>
+  )
+}
+
 function AccordionTrigger({
   className,
   children,
@@ -38,14 +77,8 @@ function AccordionTrigger({
         {...props}
       >
         {children}
-        <ChevronDownIcon
-          className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
-          data-slot="accordion-trigger-icon"
-        />
-        <ChevronUpIcon
-          className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
-          data-slot="accordion-trigger-icon"
-        />
+        <ChevronDown className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden" />
+        <ChevronUp className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline" />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   )

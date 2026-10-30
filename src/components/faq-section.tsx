@@ -1,4 +1,3 @@
-import { Minus, Plus } from 'lucide-react'
 import {
   Accordion,
   AccordionContent,
@@ -7,6 +6,43 @@ import {
 } from '@/components/ui/accordion'
 import { MotionInView } from '@/components/ui/motion-in-view'
 import { faqs } from '@/data/faq'
+
+function PlusIcon() {
+  return (
+    <svg
+      aria-hidden
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2.5"
+      viewBox="0 0 24 24"
+      width="16"
+    >
+      <path d="M5 12h14" />
+      <path d="M12 5v14" />
+    </svg>
+  )
+}
+
+function MinusIcon() {
+  return (
+    <svg
+      aria-hidden
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2.5"
+      viewBox="0 0 24 24"
+      width="16"
+    >
+      <path d="M5 12h14" />
+    </svg>
+  )
+}
 
 export function FaqSection() {
   return (
@@ -32,10 +68,10 @@ export function FaqSection() {
                 <AccordionTrigger className="py-4 hover:no-underline **:data-[slot=accordion-trigger-icon]:hidden">
                   <span className="flex items-center gap-3">
                     <span className="bg-brand-red flex size-7 shrink-0 items-center justify-center rounded-full text-white group-aria-expanded/accordion-trigger:hidden">
-                      <Plus className="size-4" />
+                      <PlusIcon />
                     </span>
                     <span className="bg-brand-red hidden size-7 shrink-0 items-center justify-center rounded-full text-white group-aria-expanded/accordion-trigger:flex">
-                      <Minus className="size-4" />
+                      <MinusIcon />
                     </span>
                     <span className="text-brand-black text-base font-bold text-pretty">
                       {faq.question}
