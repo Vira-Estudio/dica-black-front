@@ -68,7 +68,9 @@ export function ReviewsSection() {
                   <img
                     alt={review.alt}
                     className="block h-auto w-full rounded-xl"
+                    decoding="async"
                     height={480}
+                    loading="lazy"
                     src={review.src}
                     width={360}
                   />

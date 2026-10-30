@@ -9,12 +9,14 @@ import { PresentationSection } from '../components/presentation-section'
 import { PromotionSection } from '../components/promotion-section'
 import { ReceiveAccessSection } from '../components/receive-access-section'
 import { ReviewsSection } from '../components/reviews-section'
+import { SeoJsonLd } from '../components/seo-json-ld'
 import { TwoOptionsSection } from '../components/two-options-section'
 import { WillReceiveSection } from '../components/will-receive-section'
 
 export function Home() {
   return (
     <>
+      <SeoJsonLd />
       <Header />
 
       <main>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dicablack.com.br/sitemap.xml

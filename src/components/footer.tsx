@@ -14,7 +14,9 @@ export function Footer() {
           <img
             alt="Dica Black"
             className="mx-auto w-full max-w-58"
+            decoding="async"
             height={48}
+            loading="lazy"
             src={logo}
             width={200}
           />

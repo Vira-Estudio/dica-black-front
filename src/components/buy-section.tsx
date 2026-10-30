@@ -35,6 +35,7 @@ export function BuySection() {
   return (
     <section className="bg-brand-muted300 py-12 md:py-16">
       <div className="mx-auto max-w-4xl px-4 md:px-8">
+        <h2 className="sr-only">Garantir meu acesso ao Dica Black</h2>
         <div className="bg-brand-muted200 grid items-center overflow-hidden rounded-2xl shadow-md md:grid-cols-2">
           <MotionInView
             className="flex items-center justify-center"
@@ -44,7 +45,9 @@ export function BuySection() {
             <img
               alt="Mockups de celular do Dica Black"
               className="h-auto w-full max-w-xs object-contain md:max-w-sm"
+              decoding="async"
               height={600}
+              loading="lazy"
               src={card01}
               width={300}
             />
@@ -55,7 +58,9 @@ export function BuySection() {
               <img
                 alt="Logo Dica Black"
                 className="w-full max-w-64"
+                decoding="async"
                 height={48}
+                loading="lazy"
                 src={logo}
                 width={200}
               />

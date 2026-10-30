@@ -91,7 +91,9 @@ function FeatureCard({
         <img
           alt={item.alt}
           className="size-full object-cover object-center md:absolute md:inset-0"
+          decoding="async"
           height={400}
+          loading="lazy"
           src={item.image}
           width={600}
         />

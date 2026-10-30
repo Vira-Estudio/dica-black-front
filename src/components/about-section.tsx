@@ -35,7 +35,9 @@ export function AboutSection() {
           <img
             alt="Lucas Braganti, faixa-preta de Jiu-Jitsu"
             className="mx-auto h-auto w-full max-w-md rounded-2xl object-cover"
+            decoding="async"
             height={640}
+            loading="lazy"
             src={aboutImage}
             width={480}
           />

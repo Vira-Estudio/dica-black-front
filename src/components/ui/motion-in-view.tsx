@@ -22,13 +22,19 @@ const presets = {
 
 type EntrancePreset = keyof typeof presets
 
+type InViewOptions = {
+  rootMargin?: string
+  threshold?: number | number[]
+  triggerOnce?: boolean
+}
+
 type MotionInViewProps = {
   children: ReactNode
   preset?: EntrancePreset
   delay?: number
   className?: string
   /** Sobrescreve o observer padrão (ex.: opções strict para seções altas) */
-  inViewOptions?: typeof entranceInViewOptions
+  inViewOptions?: InViewOptions
 }
 
 export function MotionInView({
@@ -84,7 +90,7 @@ const staggerItemVariants = {
 type MotionStaggerListProps = {
   children: ReactNode
   className?: string
-  inViewOptions?: typeof entranceInViewOptions
+  inViewOptions?: InViewOptions
 }
 
 /** Lista com um único inView: itens entram em cascata (checks / bullets) */

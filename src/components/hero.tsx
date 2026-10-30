@@ -53,6 +53,7 @@ export function Hero() {
             loop
             muted
             playsInline
+            preload="metadata"
             src={heroVideo}
           >
             <track kind="captions" />
