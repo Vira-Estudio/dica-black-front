@@ -1,0 +1,48 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["ultracite/biome/core", "ultracite/biome/react"],
+  "files": {
+    "includes": ["!!**/public/emm"]
+  },
+  "javascript": {
+    "formatter": {
+      "lineWidth": 80,
+      "indentStyle": "space",
+      "indentWidth": 2,
+      "semicolons": "asNeeded",
+      "quoteStyle": "single"
+    }
+  },
+  "linter": {
+    "rules": {
+      "suspicious": {
+        "noConsole": "off",
+        "noReactForwardRef": "off"
+      },
+      "performance": {
+        "noImgElement": "off",
+        "noNamespaceImport": "off",
+        "noBarrelFile": "off"
+      },
+      "style": {
+        "useBlockStatements": "off",
+        "noMagicNumbers": "off",
+        "useConsistentTypeDefinitions": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "off",
+        "useImageSize": "off"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
+      },
+      "a11y": {
+        "useSemanticElements": "off"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": "off",
+        "noVoid": "off"
+      }
+    }
+  }
+}

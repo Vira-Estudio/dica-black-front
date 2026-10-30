@@ -1,0 +1,12 @@
+---
+description: Não usar o browser tool para conferir o resultado visual das alterações
+alwaysApply: true
+---
+
+# Sem preview no browser
+
+Não use o browser tool (cursor-ide-browser ou equivalente) para abrir o navegador e conferir como a UI ficou depois das alterações.
+
+A verificação visual é responsabilidade do usuário. Depois de fazer as mudanças, informe o que foi alterado e o que o usuário precisa fazer para conferir (ex.: recarregar a página, rodar `npm run dev`, abrir a rota X).
+
+Permitido: lint, typecheck, testes e checagens de código. Proibido: abrir/navegar/inspecionar a app no browser só para “ver se ficou bom”.

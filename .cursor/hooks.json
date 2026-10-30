@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "afterFileEdit": [
+      {
+        "command": "npx ultracite fix --skip=correctness/noUnusedImports --hook"
+      }
+    ]
+  },
+  "version": 1
+}
