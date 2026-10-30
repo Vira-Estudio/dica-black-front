@@ -51,6 +51,8 @@
   --font-heading: var(--font-sans);
   --font-sans: "Montserrat Variable", "Montserrat", sans-serif;
 
+  --color-brand-red-cards: #e21414;
+  --color-brand-muted-cards: #fefefe;
   --color-brand-red: #c30000;
   --color-brand-red-dark: #960001;
   --color-brand-green: #2d9b32;

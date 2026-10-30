@@ -36,15 +36,19 @@ export function BuySection() {
     <section className="bg-brand-muted300 py-12 md:py-16">
       <div className="mx-auto max-w-4xl px-4 md:px-8">
         <h2 className="sr-only">Garantir meu acesso ao Dica Black</h2>
-        <div className="bg-brand-muted200 grid items-center overflow-hidden rounded-2xl shadow-md md:grid-cols-2">
+        <div className="bg-brand-muted200 grid overflow-hidden rounded-2xl shadow-md md:grid-cols-2">
           <MotionInView
-            className="flex items-center justify-center"
+            className="relative min-h-56 md:min-h-72"
             delay={0.25}
             preset="fadeScale"
           >
+            <div
+              aria-hidden
+              className="bg-brand-red-cards absolute top-4 right-4 bottom-6 left-4 rounded-2xl md:top-5 md:right-5 md:bottom-8 md:left-5"
+            />
             <img
               alt="Mockups de celular do Dica Black"
-              className="h-auto w-full max-w-xs object-contain md:max-w-sm"
+              className="absolute bottom-2 left-1/2 z-10 w-72 max-w-none -translate-x-1/2 object-contain object-bottom md:bottom-6 md:w-[110%]"
               decoding="async"
               height={600}
               loading="lazy"
@@ -78,7 +82,7 @@ export function BuySection() {
               preset="fadeUp"
             >
               <Button
-                className="h-12 w-full font-bold uppercase md:text-base"
+                className="h-12 w-full max-w-48 font-bold uppercase md:max-w-64 md:text-base"
                 size="lg"
                 type="button"
                 variant="brand"

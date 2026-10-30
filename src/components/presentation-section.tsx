@@ -81,23 +81,21 @@ const thoughtPositionClass = {
 
 function ThoughtBubble({
   delay,
+  inView,
+  reduceMotion,
   thought,
 }: {
   delay: number
+  inView: boolean
+  reduceMotion: boolean | null
   thought: (typeof thoughts)[number]
 }) {
-  const reduceMotion = useReducedMotion()
-  const { ref, inView } = useInView(entranceInViewOptions)
   const entrance = thought.side === 'left' ? fadeLeft : fadeRight
 
   const className = `w-full rounded-2xl p-6 text-sm font-semibold text-pretty xl:absolute ${thought.align} ${thought.width} ${thoughtPositionClass[thought.position]} ${thought.zIndex} ${thought.toneClass}`
 
   if (reduceMotion) {
-    return (
-      <p className={className} ref={ref}>
-        {thought.text}
-      </p>
-    )
+    return <p className={className}>{thought.text}</p>
   }
 
   return (
@@ -105,7 +103,6 @@ function ThoughtBubble({
       animate={inView ? entrance.animate : undefined}
       className={className}
       initial={entrance.initial}
-      ref={ref}
       transition={entranceTransition(delay)}
     >
       {thought.text}
@@ -113,18 +110,21 @@ function ThoughtBubble({
   )
 }
 
-function AthleteBlock() {
+const ATHLETE_ENTRANCE_DELAY = 0.15
+const THOUGHTS_START_DELAY = 0.75
+const THOUGHT_STAGGER = 0.15
+
+function AthleteThoughtsScene() {
   const reduceMotion = useReducedMotion()
   const { ref, inView } = useInView(entranceInViewOptions)
 
-  const images = (
+  const athleteImages = (
     <>
       <img
         alt="Homem ajoelhado de kimono"
         className="relative z-0 mx-auto block aspect-[800/973] h-auto w-full rounded-xl object-cover"
         decoding="async"
         height={973}
-        loading="lazy"
         src={athlete}
         width={800}
       />
@@ -134,31 +134,41 @@ function AthleteBlock() {
         className="pointer-events-none absolute inset-0 z-20 mx-auto size-full rounded-xl object-cover"
         decoding="async"
         height={973}
-        loading="lazy"
         src={athleteTransparent}
         width={800}
       />
     </>
   )
 
-  if (reduceMotion) {
-    return (
-      <div className="relative mx-auto w-full max-w-sm md:max-w-md" ref={ref}>
-        {images}
-      </div>
-    )
-  }
-
   return (
-    <motion.div
-      animate={inView ? fadeScale.animate : undefined}
-      className="relative mx-auto w-full max-w-sm md:max-w-md"
-      initial={fadeScale.initial}
-      ref={ref}
-      transition={entranceTransition(0.35)}
-    >
-      {images}
-    </motion.div>
+    <div className="relative mx-auto mt-10 max-w-7xl" ref={ref}>
+      {reduceMotion ? (
+        <div className="relative mx-auto w-full max-w-sm md:max-w-md">
+          {athleteImages}
+        </div>
+      ) : (
+        <motion.div
+          animate={inView ? fadeScale.animate : undefined}
+          className="relative mx-auto w-full max-w-sm md:max-w-md"
+          initial={fadeScale.initial}
+          transition={entranceTransition(ATHLETE_ENTRANCE_DELAY)}
+        >
+          {athleteImages}
+        </motion.div>
+      )}
+
+      <div className="mt-6 flex flex-col gap-3 xl:mt-0 xl:contents">
+        {thoughts.map((thought, index) => (
+          <ThoughtBubble
+            delay={THOUGHTS_START_DELAY + index * THOUGHT_STAGGER}
+            inView={inView}
+            key={thought.text}
+            reduceMotion={reduceMotion}
+            thought={thought}
+          />
+        ))}
+      </div>
+    </div>
   )
 }
 
@@ -231,19 +241,7 @@ export function PresentationSection() {
             </p>
           </MotionInView>
 
-          <div className="relative mx-auto mt-10 max-w-7xl">
-            <AthleteBlock />
-
-            <div className="mt-6 flex flex-col gap-3 xl:mt-0 xl:contents">
-              {thoughts.map((thought, index) => (
-                <ThoughtBubble
-                  delay={0.35 + index * 0.15}
-                  key={thought.text}
-                  thought={thought}
-                />
-              ))}
-            </div>
-          </div>
+          <AthleteThoughtsScene />
         </div>
       </section>
 
